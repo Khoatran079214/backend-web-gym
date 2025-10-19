@@ -31,6 +31,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Swagger Documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { swaggerOptions: { persistAuthorization: true } }));
+app.get("/api-spec", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
 
 // Routes
 app.use("/auth", authRouter);

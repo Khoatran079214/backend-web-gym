@@ -14,12 +14,12 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://127.0.0.1:3000",
         description: "Development server",
       },
       {
-        url: "https://api.gymmanager.com",
-        description: "Production server",
+        url: "http://localhost:3000",
+        description: "Local server",
       },
     ],
     components: {
@@ -138,7 +138,8 @@ const options = {
       },
     },
   },
-  apis: ["./src/routes/*.ts"],
+  apis: ["./src/routes/*.ts", "./src/routes/*.swagger.ts"],
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
+
