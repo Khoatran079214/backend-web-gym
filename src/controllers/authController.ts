@@ -6,7 +6,7 @@ class AuthController {
   // REGISTER - Đăng ký user mới
   async register(req: Request, res: Response): Promise<void> {
     try {
-      const { username, password, role } = req.body;
+      const { username, password } = req.body;
 
       if (!username || !password) {
         res.status(400).json({
@@ -30,10 +30,12 @@ class AuthController {
       const salt = await bcryptjs.genSalt(10);
       const hashedPassword = await bcryptjs.hash(password, salt);
 
+      // Always set role to "staff" for new registrations
+      // Only admin can change role to "trainer" or "admin"
       const newUser = new User({
         username,
         password_hash: hashedPassword,
-        role: role || "staff",
+        role: "staff",
       });
 
       await newUser.save();
