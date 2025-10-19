@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { initializeDatabase } from "./db/database";
 
 // Import all routes
+import authRouter from "./routes/auth";
 import usersRouter from "./routes/users";
 import membersRouter from "./routes/members";
 import trainersRouter from "./routes/trainers";
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 app.use("/members", membersRouter);
 app.use("/trainers", trainersRouter);
