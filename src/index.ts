@@ -2,7 +2,14 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { initializeDatabase } from "./db/database";
+
+// Import all routes
 import usersRouter from "./routes/users";
+import membersRouter from "./routes/members";
+import trainersRouter from "./routes/trainers";
+import classesRouter from "./routes/classes";
+import subscriptionsRouter from "./routes/subscriptions";
+import checkinsRouter from "./routes/checkins";
 
 dotenv.config();
 
@@ -16,6 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/users", usersRouter);
+app.use("/members", membersRouter);
+app.use("/trainers", trainersRouter);
+app.use("/classes", classesRouter);
+app.use("/subscriptions", subscriptionsRouter);
+app.use("/checkins", checkinsRouter);
 
 // Health check
 app.get("/test", (req, res) => {
