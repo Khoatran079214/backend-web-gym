@@ -11,6 +11,11 @@ import trainersRouter from "./routes/trainers";
 import classesRouter from "./routes/classes";
 import subscriptionsRouter from "./routes/subscriptions";
 import checkinsRouter from "./routes/checkins";
+import membershipPlansRouter from "./routes/membershipPlans";
+import imagesRouter from "./routes/images";
+import classSessionsRouter from "./routes/classSessions";
+import classEnrollmentsRouter from "./routes/classEnrollments";
+import paymentsRouter from "./routes/payments";
 
 dotenv.config();
 
@@ -30,6 +35,11 @@ app.use("/trainers", trainersRouter);
 app.use("/classes", classesRouter);
 app.use("/subscriptions", subscriptionsRouter);
 app.use("/checkins", checkinsRouter);
+app.use("/membership-plans", membershipPlansRouter);
+app.use("/images", imagesRouter);
+app.use("/class-sessions", classSessionsRouter);
+app.use("/class-enrollments", classEnrollmentsRouter);
+app.use("/payments", paymentsRouter);
 
 // Health check
 app.get("/test", (req, res) => {
