@@ -50,8 +50,7 @@ const userSchema = new Schema<IUser>(
     timestamps: true,
   }
 );
-
-// Hash password before saving
+userSchema.index({ username: 1 }, { unique: true });
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password_hash")) {
     return next();
